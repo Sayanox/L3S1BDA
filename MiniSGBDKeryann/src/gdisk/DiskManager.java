@@ -6,10 +6,17 @@ import java.nio.ByteBuffer;
 
 public class DiskManager {
 	public PageId AllocPage() {
+		if(dbparams.currPage == dbparams.pageSize) {
+			dbparams.currPage = 1;
+			dbparams.currFile++;
+			//make a file
+		}else {
+			dbparams.currPage++;
+		}
 		PageId NewID = new PageId();
-		NewID.setFileIdx(0);
-		NewID.setPageIdx(0);
-		return null;
+		NewID.setFileIdx(dbparams.currFile);
+		NewID.setPageIdx(dbparams.currPage);
+		return NewID;
 	}
 	public void ReadPage(PageId page, ByteBuffer buff) {
 		String filepath = dbparams.DBPath + "\\f"+page.getFileIdx()+".txt";
