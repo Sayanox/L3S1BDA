@@ -12,6 +12,7 @@ public class main {
 		gdisk.dbparams.maxPagesPerFile = 4;
 		gdisk.dbparams.currPage = 0;
 		gdisk.dbparams.currFile = 0;
+		gdisk.dbparams.frameCount = 2;
 		// TODO Auto-generated method stub
 	    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
 	    System.out.println("Welcome the the mini SGBD: ");

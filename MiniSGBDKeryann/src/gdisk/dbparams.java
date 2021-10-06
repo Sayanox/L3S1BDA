@@ -6,6 +6,7 @@ public class dbparams {
 	public static  int maxPagesPerFile ;
 	public static  int currPage ;
 	public static  int currFile ;
+	public static  int frameCount ;
 	
 
 }

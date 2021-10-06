@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 
 public class DiskManager {
-	public PageId AllocPage() {
+	public static PageId AllocPage() {
 		if(dbparams.currPage == dbparams.pageSize) {
 			dbparams.currPage = 1;
 			dbparams.currFile++;
@@ -18,7 +18,7 @@ public class DiskManager {
 		NewID.setPageIdx(dbparams.currPage);
 		return NewID;
 	}
-	public void ReadPage(PageId page, ByteBuffer buff) {
+	public static void ReadPage(PageId page, ByteBuffer buff) {
 		String filepath = dbparams.DBPath + "\\f"+page.getFileIdx()+".txt";
 		try {
 			RandomAccessFile file = new RandomAccessFile(filepath, "r");
@@ -32,7 +32,7 @@ public class DiskManager {
 		}
 		
 	}
-	public void Writepage(PageId page, ByteBuffer buff) {
+	public static void Writepage(PageId page, ByteBuffer buff) {
 		String filepath = dbparams.DBPath + "\\f"+page.getFileIdx()+".txt";
 		try {
 			RandomAccessFile file = new RandomAccessFile(filepath, "r");
