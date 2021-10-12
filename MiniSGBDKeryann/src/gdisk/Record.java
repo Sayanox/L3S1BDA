@@ -14,14 +14,18 @@ public class Record {
 	public void writeToBuffer(ByteBuffer buff, int position) {
 		buff.position(position);
 		buff.mark();
-		buff.put((byte)values);
+		for (String s : values) {
+			buff.put((byte)values);
+		}
 		buff.rewind();
 		
 		
 	}
 	
 	public void readFromBuffer(ByteBuffer buff, int position) {
-		byte value = buff.get(position);
+		for (String s : values) {
+			buff.get(position);
+		}
 	}
 
 }
