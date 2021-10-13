@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 
 public class Frame {
 	private ByteBuffer buffer;
-	private int PageId;
+	private PageId PageId;
 	private int pin_count;
 	private boolean flag_dirty;
 	public ByteBuffer getBuffer() {
@@ -13,10 +13,10 @@ public class Frame {
 	public void setBuffer(ByteBuffer buffer) {
 		this.buffer = buffer;
 	}
-	public int getPageId() {
+	public PageId getPageId() {
 		return PageId;
 	}
-	public void setPageId(int pageId) {
+	public void setPageId(PageId pageId) {
 		PageId = pageId;
 	}
 	public int getPin_count() {
@@ -30,6 +30,12 @@ public class Frame {
 	}
 	public void setFlag_dirty(boolean flag_dirty) {
 		this.flag_dirty = flag_dirty;
+	}
+	public void reset() {
+		buffer.reset();
+		PageId = null;
+		pin_count = 0;
+		flag_dirty = false;
 	}
 
 }

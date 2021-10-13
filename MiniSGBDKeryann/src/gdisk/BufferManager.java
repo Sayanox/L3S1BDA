@@ -36,8 +36,15 @@ public class BufferManager {
 		cases[0].setFlag_dirty(valdirty);
 		cases[0].setPin_count(cases[0].getPin_count() - 1);
 		
+		
 	}
 	public void FlushAll () {
+		for(Frame box:cases) {
+			if(box.isFlag_dirty()) {
+				DiskManager.Writepage(box.getPageId(), box.getBuffer());
+			}
+			
+		}
 		
 	}
 
