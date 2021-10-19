@@ -25,9 +25,7 @@ public class Catalog implements Serializable {
 		OutputStream os = new FileOutputStream(fichier);
 		ObjectOutputStream oos = new ObjectOutputStream (os);
 		oos.writeObject(new Date());
-		for(RelationInfo r : listesRelations) {
-			oos.writeObject(r);
-		}
+		oos.writeObject(catalog);
 		oos.close();
 		
 		listesRelations.clear();
