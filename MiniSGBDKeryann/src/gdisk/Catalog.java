@@ -11,7 +11,6 @@ import java.util.Date;
 
 public class Catalog implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static String file_path = "/DB/Catalog.def";
 	private static Catalog INSTANCE;
 	
 	private List<RelationInfo> listesRelations;
@@ -21,8 +20,9 @@ public class Catalog implements Serializable {
 		
 	}
 	
-	public void Finish() {
-		OutputStream os = new FileOutputStream(file_path);
+	public void Finish() throws IOException {
+		File fichier = new File("/DB/Catalog.def");
+		OutputStream os = new FileOutputStream(fichier);
 		ObjectOutputStream oos = new ObjectOutputStream (os);
 		oos.writeObject(new Date());
 		for(RelationInfo r : listesRelations) {
