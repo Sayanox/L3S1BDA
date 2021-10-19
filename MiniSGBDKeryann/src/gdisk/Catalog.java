@@ -47,7 +47,6 @@ public class Catalog implements Serializable {
 		File fichier = new File("/DB/Catalog.def");
 		OutputStream os = new FileOutputStream(fichier);
 		ObjectOutputStream oos = new ObjectOutputStream (os);
-		oos.writeObject(new Date());
 		oos.writeObject(this);
 		oos.close();
 		
