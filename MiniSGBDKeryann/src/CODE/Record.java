@@ -15,7 +15,7 @@ public class Record {
 		buff.position(position);
 		buff.mark();
 		for (String s : values) {
-			buff.put(s); // convert string to byte !
+			//buff.put(s); // convert string to byte !
 		}
 		buff.rewind();
 		
