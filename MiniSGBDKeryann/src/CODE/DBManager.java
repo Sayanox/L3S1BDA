@@ -34,10 +34,11 @@ public class DBManager {
 		switch (cmd) {
 		case "1":
 			break;
+		case "PROCESSCOMMAND":
+			break;
 		case "EXIT":
 			returner = false;
-			buff.FlushAll();
-			cata.Finish();
+			Finish(buff,cata);
 			break;
 		default:
 			System.out.println("Please enter a valid cmd !");
@@ -46,7 +47,7 @@ public class DBManager {
 		return returner;
 	}
 
-	public static void Init() throws IOException {
+	public static void Menu() throws IOException {
 
 		System.out.println("Welcome: ");
 		boolean ending = true;
@@ -56,6 +57,13 @@ public class DBManager {
 		}
 		System.out.print("bye, monde!");
 
+	}
+	public void init() {
+		//init du catalog
+	}
+	public static void Finish(BufferManager buff, Catalog cata) throws IOException {
+		buff.FlushAll();
+		cata.Finish();
 	}
 
 }
