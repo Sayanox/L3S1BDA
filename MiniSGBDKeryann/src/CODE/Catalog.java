@@ -18,7 +18,7 @@ public class Catalog implements Serializable {
 	private static List<RelationInfo> listesRelations;
 	private static int comptRelations;
 	
-	private Catalog() {
+	public Catalog() {
 		
 	}
 	

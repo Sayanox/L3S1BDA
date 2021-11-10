@@ -6,10 +6,12 @@ import java.util.Scanner;
 import gdisk.BufferManager;
 
 public class DBManager {
+	private  Catalog catal;
 	private static DBManager instance = new DBManager();
 
 	public DBManager() {
 		try {
+			catal = new Catalog();
 			Thread.sleep(1000);
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
@@ -22,48 +24,37 @@ public class DBManager {
 		}
 		return instance;
 	}
-	public static boolean UtilMenu(BufferManager buff, Catalog cata) throws IOException {
-		boolean returner = true;
-		Scanner myObj = new Scanner(System.in);
-		myObj.reset();
-		System.out.println("Enter cmd"+ System.lineSeparator() + "=>");
-		String input = myObj.nextLine();
-		String cmd = input.toUpperCase().trim().split(" ")[0];
-		int a, b, c;
-		double note;
-		switch (cmd) {
+	public static void ProcessCommand(String cmd) throws IOException {
+		
+		String cmdat0 = cmd.toUpperCase().trim().split(" ")[0];
+		switch (cmdat0) {
 		case "1":
 			break;
-		case "PROCESSCOMMAND":
+		case "2":
 			break;
 		case "EXIT":
-			returner = false;
-			Finish(buff,cata);
+			
 			break;
 		default:
 			System.out.println("Please enter a valid cmd !");
 		}
-		myObj.close();
-		return returner;
+		
 	}
 
-	public static void Menu() throws IOException {
-
-		System.out.println("Welcome: ");
-		boolean ending = true;
-		while (ending) {
-
-			ending = UtilMenu(null, null);
-		}
-		System.out.print("bye, monde!");
-
+	
+	public void init() throws IOException {
+		catal.Init();
 	}
-	public void init() {
-		//init du catalog
-	}
-	public static void Finish(BufferManager buff, Catalog cata) throws IOException {
+	public void Finish(BufferManager buff) throws IOException {
 		buff.FlushAll();
-		cata.Finish();
+		
+			try {
+				catal.Finish();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 
 }
